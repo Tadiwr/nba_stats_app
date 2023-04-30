@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:nba_stats_app/screens/home_screen.dart';
+import 'package:nba_stats_app/screens/league_screen.dart';
 import 'package:nba_stats_app/styles/text_styles.dart';
+import 'package:nba_stats_app/widgets/bottom_nav_bar.dart';
 import 'package:nba_stats_app/widgets/buttons.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -24,7 +24,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
-        builder: (context) => const HomeScreen()
+        builder: (context) => const CustomButtomBar()
       )
     );
   }
