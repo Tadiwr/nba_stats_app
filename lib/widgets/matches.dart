@@ -1,14 +1,14 @@
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class UpcomingMatches extends StatefulWidget {
+  const UpcomingMatches({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<UpcomingMatches> createState() => _UpcomingMatchesState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _UpcomingMatchesState extends State<UpcomingMatches> {
   @override
   Widget build(BuildContext context) {
     return const Placeholder();

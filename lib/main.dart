@@ -1,6 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:nba_stats_app/screens/splash_screen.dart';
+import 'package:nba_stats_app/themes/themes.dart';
+import 'package:nba_stats_app/widgets/bottom_nav_bar.dart';
 
 void main() {
 
@@ -20,15 +23,8 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const SplashScreen(),
-      theme: ThemeData(
-        appBarTheme: const AppBarTheme(
-          systemOverlayStyle: SystemUiOverlayStyle(
-          statusBarColor: Colors.transparent,
-          statusBarIconBrightness: Brightness.dark,
-        ),
-        )
-      ),
+      home: const AppWraper(),
+      theme: lightTheme
     );
   }
 }

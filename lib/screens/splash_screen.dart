@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:nba_stats_app/screens/league_screen.dart';
 import 'package:nba_stats_app/styles/text_styles.dart';
+import 'package:nba_stats_app/widgets/bottom_nav_bar.dart';
 import 'package:nba_stats_app/widgets/buttons.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -16,6 +17,15 @@ class _SplashScreenState extends State<SplashScreen> {
   Image loadSplashImage() {
     return const Image(
       image: AssetImage('assets/images/splash.png'),
+    );
+  }
+
+  void navigateToHomeScreen() {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const AppWraper()
+      )
     );
   }
 
@@ -68,7 +78,11 @@ class _SplashScreenState extends State<SplashScreen> {
                 height: 80,
                 child: Padding(
                   padding: const EdgeInsets.all(10),
-                  child: RoundedButton(text: "Take me there", color: green),
+                  child: RoundedButton(
+                    text: "Take me there",
+                    color: green,
+                    onPressed: () => navigateToHomeScreen()
+                  ),
                 ),
               ),
           ],
