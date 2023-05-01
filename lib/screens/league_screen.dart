@@ -10,8 +10,11 @@ class LeagueScreen extends StatefulWidget {
 class _LeagueScreenState extends State<LeagueScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("League")
+      ),
+      body: const Center(
         child: Text("League Stats Screen Yey")
       ),
 
