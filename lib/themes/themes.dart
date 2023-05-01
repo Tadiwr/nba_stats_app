@@ -14,11 +14,9 @@ var lightTheme = ThemeData(
           ),
           elevation: 0,
           titleTextStyle: TextStyle(
-            fontSize: 30,
-            // fontWeight: FontWeight.bold,
+            fontSize: 20,
             color: Colors.black
           ),
-          toolbarHeight: 70
         ),
         // Color theme
         brightness: Brightness.light,

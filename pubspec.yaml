@@ -16,9 +16,16 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
-  fl_chart: ^0.62.0
+  syncfusion_flutter_charts: ^21.1.41
 
 flutter:
   uses-material-design: true
   assets:
     - assets/images/splash.png
+
+  fonts:
+    - family: Helvatica
+      fonts:
+        - asset: assets/fonts/helvatica-neue/regular.ttf
+        - asset: assets/fonts/helvatica-neue/medium.ttf
+        - asset: assets/fonts/helvatica-neue/bold.ttf
