@@ -1,5 +1,5 @@
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:flutter/material.dart';
+import 'package:nba_stats_app/data/models/team_model.dart';
 
 class TeamScreen extends StatefulWidget {
   const TeamScreen({super.key});
@@ -9,8 +9,13 @@ class TeamScreen extends StatefulWidget {
 }
 
 class _TeamScreenState extends State<TeamScreen> {
+
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Teams")
+      ),
+    );
   }
 }
