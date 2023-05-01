@@ -10,7 +10,7 @@ class EsonCoreApi {
     var url = Uri.parse("http://sports.core.api.espn.com/v2/sports/basketball/leagues/nba/seasons/2023/teams/$teamId");
     var res = await http.get(url);
     Map<String, dynamic> team = jsonDecode(res.body);
-    return TeamModel(team);
+    return TeamModel.fromJson(team);
   }
 
 }
