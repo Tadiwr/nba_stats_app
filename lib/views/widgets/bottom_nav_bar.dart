@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:nba_stats_app/screens/league_screen.dart';
-import 'package:nba_stats_app/screens/team_screen.dart';
-import 'package:nba_stats_app/screens/matches.dart';
+import 'package:nba_stats_app/views/screens/league_screen.dart';
+import 'package:nba_stats_app/views/screens/team_screen.dart';
+import 'package:nba_stats_app/views/screens/matches.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 
 
