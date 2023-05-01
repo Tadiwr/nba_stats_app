@@ -1,5 +1,4 @@
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+import "package:flutter/material.dart";
 
 class UpcomingMatches extends StatefulWidget {
   const UpcomingMatches({super.key});
@@ -11,6 +10,10 @@ class UpcomingMatches extends StatefulWidget {
 class _UpcomingMatchesState extends State<UpcomingMatches> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Matches")
+      ),
+    );
   }
 }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:nba_stats_app/screens/league_screen.dart';
 import 'package:nba_stats_app/styles/text_styles.dart';
 import 'package:nba_stats_app/widgets/bottom_nav_bar.dart';
 import 'package:nba_stats_app/widgets/buttons.dart';
