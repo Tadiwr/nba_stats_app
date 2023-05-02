@@ -1,8 +1,10 @@
+import 'package:flutter/services.dart';
+
 class TeamModel {
 
-  final int id;
+  final String id;
   final String displayName;
-  final String color;
+  final Color color;
   final String athletes;
   final String location;
   final String name;
@@ -22,17 +24,17 @@ class TeamModel {
     required this.alternativeColor
   });
 
-  factory TeamModel.fromJson(Map<String, dynamic> json) {
+  factory TeamModel.fromJson(dynamic json) {
     return TeamModel(
       id: json["id"],
       displayName: json["displayName"],
-      color: json["color"],
-      athletes: json["athletes"],
+      color : Color(int.parse(json["color"], radix: 16)).withOpacity(1.0),
+      athletes: json["athletes"]['\$ref'],
       location: json["location"],
       name: json["name"],
       abbreviation: json["abbreviation"],
       logoUrl: json["logos"][0]["href"],
-      alternativeColor: json["alternativeColor"]
+      alternativeColor: json["alternateColor"]
     );
   }
 
