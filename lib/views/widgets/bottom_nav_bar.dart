@@ -64,6 +64,9 @@ class _AppWraperState extends State<AppWraper> {
       controller: _controller,
       screens: buildScreens(),
       items: navBarItems(),
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      navBarStyle: NavBarStyle.style1,
+
     );
   }
 }
