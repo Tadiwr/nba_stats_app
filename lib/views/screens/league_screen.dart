@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nba_stats_app/views/widgets/wins_chart.dart';
 
 class LeagueScreen extends StatefulWidget {
   const LeagueScreen({super.key});
@@ -14,10 +15,12 @@ class _LeagueScreenState extends State<LeagueScreen> {
       appBar: AppBar(
         title: const Text("League")
       ),
-      body: const Center(
-        child: Text("League Stats Screen Yey")
-      ),
-
+      body: ListView(
+        children: const [
+          WinsChart(),
+          WinsChart(),
+        ],
+      )
     );
   }
 }
