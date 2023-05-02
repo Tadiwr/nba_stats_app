@@ -33,7 +33,6 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        foregroundColor: Colors.black54,
         centerTitle: true,
         backgroundColor: Colors.transparent,
         title: const Text("Codapt"),
@@ -79,7 +78,6 @@ class _SplashScreenState extends State<SplashScreen> {
                   padding: const EdgeInsets.all(10),
                   child: RoundedButton(
                     text: "Take me there",
-                    color: green,
                     onPressed: () => navigateToHomeScreen()
                   ),
                 ),
