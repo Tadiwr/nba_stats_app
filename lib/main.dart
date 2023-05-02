@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:nba_stats_app/views/screens/splash_screen.dart';
-import 'package:nba_stats_app/views/widgets/bottom_nav_bar.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(

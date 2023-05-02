@@ -1,4 +1,4 @@
-import 'dart:ui';
+// ignore_for_file: depend_on_referenced_packages
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -50,18 +50,14 @@ class _WinsChartState extends State<WinsChart> {
                 padding: const EdgeInsets.only(left:20.0, right:20.0, bottom: 10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
+                  children: const [
                     Expanded(
                       flex: 2,
-                      child: Container(
-                        child: const Text("Wins")
-                      )
+                      child: Text("Wins")
                     ),
                     Expanded(
                       flex: 1,
-                      child: Container(
-                        child: const Icon(Icons.arrow_forward)
-                      )
+                      child: Icon(Icons.arrow_forward)
                     )
                   ],
                 ),

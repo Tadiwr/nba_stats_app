@@ -14,9 +14,6 @@ class _TeamScreenState extends State<TeamScreen> {
   @override
   Widget build(BuildContext context) {
 
-    EsonCoreApi().getTeams()
-    .then((json) => print(json));
-
     return Scaffold(
       appBar: AppBar(
         title: const Text("Teams")
