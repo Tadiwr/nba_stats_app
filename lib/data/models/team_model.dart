@@ -9,7 +9,7 @@ class TeamModel {
   final String location;
   final String name;
   final String abbreviation;
-  final String alternativeColor;
+  final Color alternativeColor;
   final String logoUrl;
 
   TeamModel({
@@ -34,7 +34,7 @@ class TeamModel {
       name: json["name"],
       abbreviation: json["abbreviation"],
       logoUrl: json["logos"][0]["href"],
-      alternativeColor: json["alternateColor"]
+      alternativeColor:Color(int.parse(json["alternateColor"] , radix: 16)).withOpacity(1.0)
     );
   }
 
