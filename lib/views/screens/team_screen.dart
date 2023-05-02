@@ -29,6 +29,7 @@ class _TeamScreenState extends State<TeamScreen> {
                 return TeamCard(
                   teamName: list?[index]["team"],
                   teamAbrreviation: list?[index]["abbreviation"],
+                  teamId: list?[index]["id"],
                 );
               },
             );
