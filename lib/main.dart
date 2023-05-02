@@ -31,7 +31,7 @@ class MainApp extends StatelessWidget {
         ),
         appBarTheme: const AppBarTheme(
             titleTextStyle: TextStyle(
-              fontWeight: FontWeight.bold,
+              fontWeight: FontWeight.bold, 
               fontSize: 25,
             ),
             systemOverlayStyle:
