@@ -1,17 +1,37 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:nba_stats_app/views/screens/single_team_screen.dart';
 
 class TeamCard extends StatefulWidget {
-  const TeamCard({super.key, required this.teamName, required this.teamAbrreviation});
+  const TeamCard({
+    super.key,
+    required this.teamId,
+    required this.teamName,
+    required this.teamAbrreviation
+  });
 
   final String teamName;
   final String teamAbrreviation;
+  final int teamId;
 
   @override
   State<TeamCard> createState() => _TeamCardState();
 }
 
+
+
 class _TeamCardState extends State<TeamCard> {
+
+
+  void navigateToTeamDetails(BuildContext context, int id) {
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => TeamDetailsScreen(teamId: id,)
+    )
+  );
+}
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -42,7 +62,15 @@ class _TeamCardState extends State<TeamCard> {
                   ],
                 ),
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: ((context) => TeamDetailsScreen(teamId: widget.teamId)
+                      )
+                      )
+                    );
+                  },
                   icon: const Icon(Icons.arrow_forward),
                 )
               ],
