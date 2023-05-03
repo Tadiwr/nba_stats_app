@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nba_stats_app/data/models/team_model.dart';
-import 'package:nba_stats_app/views/screens/single_team_screen.dart';
+import 'package:nba_stats_app/views/screens/team_details_screen.dart';
 import 'package:http/http.dart' as http;
 
 class TeamCard extends StatefulWidget {
@@ -11,12 +11,14 @@ class TeamCard extends StatefulWidget {
     super.key,
     required this.teamId,
     required this.teamName,
-    required this.teamAbrreviation
+    required this.teamAbrreviation,
+    required this.onPressed,
   });
 
   final String teamName;
   final String teamAbrreviation;
   final int teamId;
+  final Function() onPressed;
 
   @override
   State<TeamCard> createState() => _TeamCardState();
@@ -72,12 +74,9 @@ class _TeamCardState extends State<TeamCard> {
                         if (snapshot.hasData) {
                           return Image.network(snapshot.data ?? '');
                         }
-                        else {
-                          return Icon(Icons.shield);
-                        }
                   
                         return const Center(
-                          child: CircularProgressIndicator(),
+                          child: Icon(Icons.shield),
                         );
                       },
                     ),
@@ -103,13 +102,7 @@ class _TeamCardState extends State<TeamCard> {
                   flex: 1,
                   child: IconButton(
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: ((context) => TeamDetailsScreen(teamId: widget.teamId)
-                        )
-                        )
-                      );
+                      widget.onPressed();
                     },
                     icon: const Icon(Icons.arrow_forward),
                   ),
