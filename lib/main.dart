@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:nba_stats_app/themes/colors.dart';
 import 'package:nba_stats_app/views/screens/splash_screen.dart';
+import 'package:nba_stats_app/views/widgets/app_wraper.dart';
 
 void main() {
 
@@ -28,7 +29,7 @@ class MainApp extends StatelessWidget {
 
       // TODO: Add logic to allow the app to descide whether to navigate to
       // splash screen or home page!
-      home: const SplashScreen(),
+      home: const AppWraper(),
     );
   }
 }
