@@ -10,7 +10,7 @@ class MyColors {
   final Color green = const Color.fromARGB(255, 35, 250, 42);
   final Color surfaceGrey = const Color.fromARGB(255, 16, 16, 16);
   final Color darkGrey =  const Color.fromARGB(255, 16, 16, 16);
-  final Color lightGrey = const Color.fromARGB(255, 58, 58, 58);
+  final Color lightGrey = Color.fromARGB(255, 33, 33, 33);
 }
 
 ///  This instance is ment to be accessed by the rest of the app 
