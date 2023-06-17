@@ -5,6 +5,21 @@ const h1 = TextStyle(
   fontWeight: FontWeight.bold,
 );
 
+const h2 = TextStyle(
+  fontSize: 30,
+  fontWeight: FontWeight.bold,
+);
+
+const h3 = TextStyle(
+  fontSize: 20,
+  fontWeight: FontWeight.bold,
+);
+
+const h4 = TextStyle(
+  fontSize: 10,
+  fontWeight: FontWeight.bold,
+);
+
 const p1 = TextStyle(
   fontSize: 20,
 );
