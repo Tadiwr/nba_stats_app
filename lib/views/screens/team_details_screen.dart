@@ -1,11 +1,9 @@
 import 'dart:convert';
-import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:nba_stats_app/data/models/team_model.dart';
 import 'package:nba_stats_app/data/models/team_record_model.dart';
-import 'package:nba_stats_app/themes/colors.dart';
 
 class TeamDetailsScreen extends StatefulWidget {
   const TeamDetailsScreen({super.key, required this.teamId});
@@ -60,9 +58,7 @@ class _DetailsState extends State<Details> {
   Future<RecordModel> getStats() async {
     var url = Uri.http("sports.core.api.espn.com","v2/sports/basketball/leagues/nba/seasons/2023/types/2/teams/${widget.data?.id ?? ''}/record");
     var res = await http.get(url);
-    debugPrint(res.body);
     var data = jsonDecode(res.body);
-    debugPrint(RecordModel.fromJson(data).summary);
     return RecordModel.fromJson(data);
   }
 
@@ -194,7 +190,7 @@ class Metric extends StatelessWidget {
         borderRadius: const BorderRadius.all(Radius.circular(20)),
         child: Container(
           width: 200,
-          color: Color.fromARGB(255, 24, 24, 24),
+          color: const Color.fromARGB(255, 24, 24, 24),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
