@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+
 class ScoreBoardModel {
   final int type;
   final List<EventModel> events;
@@ -15,13 +18,13 @@ class ScoreBoardModel {
     // extract events
     if (json["events"].isNotEmpty) {
       for(int x = 0; x < json["events"].length; x++) {
-        EventModel eventX = EventModel.fromJson(x);
+        EventModel eventX = EventModel.fromJson(json["events"][x]);
         events.add(eventX); 
       }
     }
 
     return ScoreBoardModel(
-      type : json["season"],
+      type : json["season"]["year"],
       data: json["day"]["date"],
       events: events,
     );
@@ -37,8 +40,8 @@ class EventModel {
   final Notes notes; 
   final Status status;
   final List<Competitor> competitors;
-  final HeadLine headline;
-  final String thumbnail;
+  // final HeadLine headline;
+  // final String thumbnail;
 
   EventModel({
     required this.id,
@@ -48,15 +51,15 @@ class EventModel {
     required this.notes,
     required this.status,
     required this.competitors,
-    required this.headline, 
-    required this.thumbnail
+    // required this.headline, 
+    // required this.thumbnail
   });
 
 
   factory EventModel.fromJson(dynamic json) {
 
     final List<Competitor> comps = [];
-    final dynamic jsonComps = json["competitons"]["co mpetitors"];
+    final dynamic jsonComps = json["competitions"][0]["competitors"];
 
     for(int x = 0; x < jsonComps.length; x ++) {
       final competitorX = jsonComps[x];
@@ -64,15 +67,15 @@ class EventModel {
     } 
 
     return EventModel(
-      id: json["id"],
+      id: int.parse(json["id"]),
       date: json["date"],
-      shortName: json["ShortName"],
+      shortName: json["shortName"],
       type: json["season"]["type"],
-      notes: Notes.fromJson(json["competitions"][""][0]["notes"]),
+      notes: Notes.fromJson(json["competitions"][0]["notes"]),
       status: Status.fromJson(json["status"]),
-      headline: HeadLine.fromJson(json["competitions"][""][0]["headlines"]),
+      // headline: HeadLine.fromJson(jsonEncode(json["competitions"][0])),
       competitors: comps,
-      thumbnail: json["competitions"][0]["headlines"][0]["video"][0]["thumbnail"]
+      // thumbnail: json["competitions"][0]["headlines"][0]["video"][0]["thumbnail"]
     );
   }
 }
@@ -84,9 +87,10 @@ class HeadLine {
   HeadLine({required this.full,required this.short});
 
   factory HeadLine.fromJson(dynamic json) {
+    log(json);
     return HeadLine(
-      full : json["headlines"][0]["description"],
-      short: json["headlines"][0]["shortLinkText"]
+      full : json["description"],
+      short: json["shortLinkText"]
     );
   }
 }
@@ -108,7 +112,7 @@ class Status {
 
   factory Status.fromJson(dynamic json) {
     return Status(
-      clock : json["clock"],
+      clock : json["clock"].toInt(),
       displayClock: json["displayClock"],
       description: json["type"]["description"],
       completed: json["type"]["completed"],
@@ -121,8 +125,8 @@ class Competitor {
   final int id;
   final String displayName;
   final String homeAway;
-  final bool winner;
-  final int score;
+  // final bool winner;
+  final String score;
   final String logoUrl;
   final String color;
   final List<Leader> leaders;
@@ -132,7 +136,7 @@ class Competitor {
     required this.id,
     required this.displayName,
     required this.homeAway,
-    required this.winner,
+    // required this.winner,
     required this.score,
     required this.logoUrl,
     required this.color,
@@ -143,22 +147,22 @@ class Competitor {
   factory Competitor.fromJson(dynamic json) {
 
     final jsonLeaders = json["leaders"];
-    final List<Leader> _leaders = [];
+    final List<Leader> leaders = [];
 
     for(int x = 0; x < jsonLeaders.length; x++) {
       final leaderX = jsonLeaders[x];
-      _leaders.add(Leader.fromJson(leaderX));
+      leaders.add(Leader.fromJson(leaderX));
     }
 
     return Competitor(
-      id: json["id"],
+      id: int.parse(json["id"]),
       displayName: json["team"]["displayName"],
       homeAway: json["homeAway"],
-      winner: json["winner"],
-      score: int.parse(json["score"]),
-      logoUrl: json["logo"],
-      color: json["color"],
-      leaders: _leaders,
+      score: json["score"],
+      // winner: json["winner"],
+      logoUrl: json["team"]["logo"],
+      color: json["team"]["color"],
+      leaders: leaders,
       statistics: Statistics.fromJson(json["statistics"]),
     );
   }
@@ -184,11 +188,11 @@ class Leader {
   factory Leader.fromJson(dynamic json) {
     return Leader(
       category: json["displayName"],
-      athleteId: json["leaders"][0]["id"],
-      fullName: json["leaders"][0]["fullName"],
-      headshotUrl: json["leaders"][0]["headshot"],
-      jersey: json["leaders"][0]["jersey"],
-      value: json["value"]
+      athleteId: int.parse(json["leaders"][0]["athlete"]["id"]),
+      fullName: json["leaders"][0]["athlete"]["fullName"],
+      headshotUrl: json["leaders"][0]["athlete"]["headshot"],
+      jersey: int.parse(json["leaders"][0]["athlete"]["jersey"]),
+      value: json["leaders"][0]["value"]
     );
   }
 }
@@ -198,10 +202,10 @@ class Statistics {
   final int rebounds;
   final int fieldGoalsAttempted;
   final int fieldGoalsMade;
-  final double fgPercentage;
-  final double freeThrowPct;
+  final String fgPercentage;
+  final String freeThrowPct;
   final int points;
-  final double threePointPct;
+  final String threePointPct;
   final int threesMade;
   final int threesAttempted;
 
@@ -222,11 +226,11 @@ class Statistics {
       rebounds: int.parse(json[0]["displayValue"]),
       fieldGoalsAttempted: int.parse(json[3]["displayValue"]),
       fieldGoalsMade: int.parse(json[4]["displayValue"]),
-      fgPercentage: int.parse(json[5]["displayValue"]).toDouble(),
-      freeThrowPct: int.parse(json[6]["displayValue"]).toDouble(),
+      fgPercentage: json[5]["displayValue"],
+      freeThrowPct: json[6]["displayValue"],
       points: int.parse(json[9]["displayValue"]),
-      threePointPct: int.parse(json[10]["displayValue"]).toDouble(),
-      threesMade: int.parse(json[16]["displayValue"]),
+      threePointPct: json[10]["displayValue"],
+      threesMade: int.parse(json[12]["displayValue"]),
       threesAttempted: int.parse(json[11]["displayValue"])
     );
   }
@@ -241,8 +245,8 @@ class Notes {
 
   factory Notes.fromJson(dynamic json) {
     return Notes(
-      type : json["type"],
-      headline: json["headline"]
+      type : json[0]["type"],
+      headline: json[0]["headline"]
     );
   }
 }
