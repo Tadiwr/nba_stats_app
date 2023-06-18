@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:nba_stats_app/data/repo.dart';
 import 'package:nba_stats_app/themes/colors.dart';
 import 'package:nba_stats_app/views/screens/splash_screen.dart';
 import 'package:nba_stats_app/views/widgets/app_wraper.dart';
@@ -19,6 +20,8 @@ void main() {
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
 
+
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -26,10 +29,7 @@ class MainApp extends StatelessWidget {
       darkTheme: darkTheme,
       themeMode: ThemeMode.dark,
       debugShowCheckedModeBanner: false,
-
-      // TODO: Add logic to allow the app to descide whether to navigate to
-      // splash screen or home page!
-      home: const AppWraper(),
+      home: const SplashScreen(),
     );
   }
 }
