@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:nba_stats_app/themes/colors.dart';
 import 'package:nba_stats_app/views/widgets/first_launch_dec.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
 
@@ -19,9 +18,6 @@ void main() {
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
 
-  Future<SharedPreferences> getPrefsInstance() async {
-    return SharedPreferences.getInstance(); 
-  }
 
   @override
   Widget build(BuildContext context) {

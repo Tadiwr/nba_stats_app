@@ -10,27 +10,20 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  String username = '';
 
-  void getUsername() async {
+  String username = "";
+
+  void _getFutureUsername() async {
     final prefs = await SharedPreferences.getInstance();
-    username = prefs.getString("username") ?? "Welcome bro!";
-  }
-
-  @override
-  void initState() {
     setState(() {
-      getUsername();
+      username = prefs.getString("username") ?? "";
     });
-    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
 
-    setState(() {
-      getUsername();
-    });
+  _getFutureUsername();
 
     return Scaffold(
       appBar: AppBar(
