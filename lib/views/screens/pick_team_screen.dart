@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:nba_stats_app/views/widgets/app_wraper.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../data/apis/espn_core_api.dart';
 import '../widgets/team_card.dart';
@@ -26,6 +27,30 @@ class _PickTeamScreenState extends State<PickTeamScreen> {
       )
     );  
 
+    void setFavouriteTeam(int teamId) async {
+      final prefs = await SharedPreferences.getInstance();
+
+      await prefs.setInt('favouriteTeamId', teamId)
+      .then((value) => {
+        debugPrint("Team ID: $teamId Written to storage")
+      })
+      .catchError((err) => {
+        debugPrint("Something went wrong: $err")
+      });
+    }
+
+    void setFirstLaunch() async{
+      final pref = await SharedPreferences.getInstance();
+
+      await pref.setBool("isFirstLaunch", false)
+      .then((value) => {
+        debugPrint("Value Set")
+      })
+      .catchError((e) => {
+        debugPrint("SOmething went wrong")
+      });
+    }
+
     return  Scaffold(
       appBar: AppBar(
         title: const Text("Pick your favourite"),
@@ -42,7 +67,9 @@ class _PickTeamScreenState extends State<PickTeamScreen> {
                     teamName: list?[index]["team"],
                     teamAbrreviation: list?[index]["abbreviation"],
                     teamId: list?[index]["id"],
-                    onPressed: () {
+                    onPressed: (teamId) {
+                      setFavouriteTeam(teamId);
+                      setFirstLaunch();
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(

@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:nba_stats_app/data/repo.dart';
 import 'package:nba_stats_app/themes/colors.dart';
-import 'package:nba_stats_app/views/screens/splash_screen.dart';
-import 'package:nba_stats_app/views/widgets/app_wraper.dart';
+import 'package:nba_stats_app/views/widgets/first_launch_dec.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
 
-  // Sets the color of the navigation bar on android
+  
   SystemChrome.setSystemUIOverlayStyle( SystemUiOverlayStyle(
       systemNavigationBarColor: appColors.surfaceGrey,
       statusBarIconBrightness: Brightness.light,
@@ -20,16 +19,19 @@ void main() {
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
 
-
+  Future<SharedPreferences> getPrefsInstance() async {
+    return SharedPreferences.getInstance(); 
+  }
 
   @override
   Widget build(BuildContext context) {
+
     return MaterialApp(
       title: "Nba Stats",
       darkTheme: darkTheme,
       themeMode: ThemeMode.dark,
       debugShowCheckedModeBanner: false,
-      home: const SplashScreen(),
+      home: const FirstLaunchDectection()
     );
   }
 }

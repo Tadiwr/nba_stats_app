@@ -18,7 +18,7 @@ class TeamCard extends StatefulWidget {
   final String teamName;
   final String teamAbrreviation;
   final int teamId;
-  final Function() onPressed;
+  final Function(int) onPressed;
 
   @override
   State<TeamCard> createState() => _TeamCardState();
@@ -102,7 +102,7 @@ class _TeamCardState extends State<TeamCard> {
                   flex: 1,
                   child: IconButton(
                     onPressed: () {
-                      widget.onPressed();
+                      widget.onPressed(widget.teamId);
                     },
                     icon: const Icon(Icons.arrow_forward),
                   ),

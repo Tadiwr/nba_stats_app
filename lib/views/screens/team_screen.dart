@@ -42,7 +42,7 @@ class _TeamScreenState extends State<TeamScreen> {
                   teamName: list?[index]["team"],
                   teamAbrreviation: list?[index]["abbreviation"],
                   teamId: list?[index]["id"],
-                  onPressed: () {
+                  onPressed: (teamId) {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
