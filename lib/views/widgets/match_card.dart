@@ -10,33 +10,36 @@ class MatchCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: const BorderRadius.all(Radius.circular(10)),
-      child: Container(
-        padding: const EdgeInsets.all(10),
-        color: appColors.lightGrey,
-        width: double.infinity,
-        height: 220,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Opponent(data : data?.competitors[0]),
-            Column(
-              children: [
-                Expanded(
-                  child: Text(
-                    data?.status.description ?? "",
-                    style: h3,
-                )),
-                const Expanded(
-                  child: Text("VS", style: h3,),
-                ),
-              ],
-            ),
-            Opponent(data : data?.competitors[1]),
-          ],
-        ) ,
+    return Padding(
+      padding: const EdgeInsets.all(15.0),
+      child: ClipRRect(
+        borderRadius: const BorderRadius.all(Radius.circular(10)),
+        child: Container(
+          padding: const EdgeInsets.all(10),
+          color: appColors.lightGrey,
+          width: double.infinity,
+          height: 220,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Opponent(data : data?.competitors[0]),
+              Column(
+                children: [
+                  Expanded(
+                    child: Text(
+                      data?.status.description ?? "",
+                      style: h3,
+                  )),
+                  const Expanded(
+                    child: Text("VS", style: h3,),
+                  ),
+                ],
+              ),
+              Opponent(data : data?.competitors[1]),
+            ],
+          ) ,
+        ),
       ),
     );
   }

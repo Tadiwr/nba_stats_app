@@ -4,6 +4,7 @@ import 'package:nba_stats_app/themes/colors.dart';
 import 'package:nba_stats_app/views/screens/pick_team_screen.dart';
 import 'package:nba_stats_app/views/widgets/buttons.dart';
 import 'package:nba_stats_app/views/widgets/rounded_inpu_box.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../widgets/app_wraper.dart';
 
 class OnBoardingScreen extends StatefulWidget {
@@ -17,6 +18,8 @@ class OnBoardingScreen extends StatefulWidget {
 }
 
 class _OnBoardingScreenState extends State<OnBoardingScreen> {
+
+  String username = ""; 
 
   @override
   void initState() {
@@ -36,6 +39,19 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
         builder: (context) => const AppWraper()
       )
     );
+  }
+
+  void setUsername() async{
+    final prefs = await SharedPreferences.getInstance();
+
+    await prefs.setString('username', username)
+    .then((value) => {
+      debugPrint("Username: $username Written to Storage")
+    })
+    .catchError((err) => {
+      debugPrint(err)
+    });
+
   }
 
   @override
@@ -58,19 +74,27 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
           mainAxisAlignment: MainAxisAlignment.end,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
+            Text(
               "What should we call you?",
               softWrap: true,
               style: TextStyle(
                 fontSize: 50,
+                color: appColors.green
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.only(top:20,),
+            Padding(
+              padding: const EdgeInsets.only(top:20,),
               child: SizedBox(
                 width: double.infinity,
                 height: 50,
-                child: RoundedInput(),
+                child: RoundedInput(
+                  onInput: (value) {
+                    setState(() {
+                      username = value;
+                      debugPrint(username);
+                    });
+                  },
+                ),
               ),
             ),
             SizedBox(
@@ -79,6 +103,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               child: RoundedButton(
                 text: "Continue",
                 onPressed: () {
+                  setUsername();
                   Navigator.push(
                     context,
                     MaterialPageRoute(

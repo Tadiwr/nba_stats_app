@@ -1,55 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:nba_stats_app/data/repo.dart';
+import 'package:nba_stats_app/views/widgets/first_launch_dec.dart';
+import 'package:nba_stats_app/themes/default_dark_theme.dart';
 import 'package:nba_stats_app/themes/colors.dart';
-import 'package:nba_stats_app/views/screens/splash_screen.dart';
-import 'package:nba_stats_app/views/widgets/app_wraper.dart';
 
 void main() {
-
-  // Sets the color of the navigation bar on android
+  
   SystemChrome.setSystemUIOverlayStyle( SystemUiOverlayStyle(
       systemNavigationBarColor: appColors.surfaceGrey,
       statusBarIconBrightness: Brightness.light,
       statusBarBrightness: Brightness.light
   ));
 
-  runApp(const MainApp());
+  runApp(const Core());
 }
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
-
-
+// Core app entry point
+class Core extends StatelessWidget {
+  const Core({super.key});
 
   @override
   Widget build(BuildContext context) {
+
     return MaterialApp(
       title: "Nba Stats",
       darkTheme: darkTheme,
       themeMode: ThemeMode.dark,
       debugShowCheckedModeBanner: false,
-      home: const SplashScreen(),
+
+      // Decides whether to navigate to splash screen
+      // or home screen;
+  
+      home: const FirstLaunchDectection()
     );
   }
 }
 
-final darkTheme = ThemeData(
-  fontFamily: 'Helvatica',
-  scaffoldBackgroundColor: appColors.surfaceGrey,
-  colorScheme: const ColorScheme.dark().copyWith(
-    primary: appColors.green,
-    secondary: appColors.lightGrey,
-    surface: appColors.surfaceGrey,
-    background: appColors.darkGrey
-  ),
-  appBarTheme: const AppBarTheme(
-      centerTitle: true,
-      elevation: 0,
-      systemOverlayStyle: SystemUiOverlayStyle(statusBarColor: Colors.transparent),
-      titleTextStyle: TextStyle(
-        fontWeight: FontWeight.bold, 
-        fontSize: 25,
-      ),
-    ),
-);

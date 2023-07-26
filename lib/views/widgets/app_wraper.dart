@@ -2,9 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:nba_stats_app/themes/colors.dart';
-import 'package:nba_stats_app/views/screens/league_screen.dart';
-import 'package:nba_stats_app/views/screens/team_screen.dart';
+import 'package:nba_stats_app/views/screens/home_screen.dart';
 import 'package:nba_stats_app/views/screens/matches.dart';
+import 'package:nba_stats_app/views/screens/team_screen.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 
 
@@ -21,7 +21,7 @@ class _AppWraperState extends State<AppWraper> {
 
   List<Widget> buildScreens() {
     return [
-      const LeagueScreen(),
+      const HomeScreen(),
       const TeamScreen(),
       const UpcomingMatches()
     ];
@@ -31,7 +31,7 @@ class _AppWraperState extends State<AppWraper> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => const LeagueScreen(),
+        builder: (context) => const HomeScreen(),
       )
     );
   }

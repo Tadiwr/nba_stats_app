@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:nba_stats_app/data/local/shared_pref.dart';
 import 'package:nba_stats_app/views/widgets/app_wraper.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../data/apis/espn_core_api.dart';
 import '../widgets/team_card.dart';
@@ -42,7 +44,9 @@ class _PickTeamScreenState extends State<PickTeamScreen> {
                     teamName: list?[index]["team"],
                     teamAbrreviation: list?[index]["abbreviation"],
                     teamId: list?[index]["id"],
-                    onPressed: () {
+                    onPressed: (teamId) {
+                      setFavouriteTeam(teamId);
+                      setFirstLaunch();
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
