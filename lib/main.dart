@@ -30,7 +30,7 @@ class Core extends StatelessWidget {
 
       // Decides whether to navigate to splash screen
       // or home screen;
-
+  
       home: const FirstLaunchDectection()
     );
   }
