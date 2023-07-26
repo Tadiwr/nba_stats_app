@@ -11,6 +11,8 @@ class TeamModel {
   final String abbreviation;
   final Color alternativeColor;
   final String logoUrl;
+  final String atheletes;
+  final String leaders;
 
   TeamModel({
     required this.id,
@@ -21,7 +23,9 @@ class TeamModel {
     required this.name,
     required this.abbreviation,
     required this.logoUrl,
-    required this.alternativeColor
+    required this.alternativeColor,
+    required this.atheletes,
+    required this.leaders,
   });
 
   factory TeamModel.fromJson(dynamic json) {
@@ -34,7 +38,9 @@ class TeamModel {
       name: json["name"],
       abbreviation: json["abbreviation"],
       logoUrl: json["logos"][0]["href"],
-      alternativeColor:Color(int.parse(json["alternateColor"] , radix: 16)).withOpacity(1.0)
+      alternativeColor:Color(int.parse(json["alternateColor"] , radix: 16)).withOpacity(1.0),
+      atheletes: json["athletes"]["\$ref"],
+      leaders: json["leaders"]["\$ref"],
     );
   }
 
