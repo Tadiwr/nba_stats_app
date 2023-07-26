@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:nba_stats_app/data/local/shared_pref.dart';
 import 'package:nba_stats_app/views/widgets/app_wraper.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -26,30 +27,6 @@ class _PickTeamScreenState extends State<PickTeamScreen> {
         systemNavigationBarContrastEnforced: true,
       )
     );  
-
-    void setFavouriteTeam(int teamId) async {
-      final prefs = await SharedPreferences.getInstance();
-
-      await prefs.setInt('favouriteTeamId', teamId)
-      .then((value) => {
-        debugPrint("Team ID: $teamId Written to storage")
-      })
-      .catchError((err) => {
-        debugPrint("Something went wrong: $err")
-      });
-    }
-
-    void setFirstLaunch() async{
-      final pref = await SharedPreferences.getInstance();
-
-      await pref.setBool("isFirstLaunch", false)
-      .then((value) => {
-        debugPrint("Value Set")
-      })
-      .catchError((e) => {
-        debugPrint("SOmething went wrong")
-      });
-    }
 
     return  Scaffold(
       appBar: AppBar(
