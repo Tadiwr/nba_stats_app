@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:nba_stats_app/styles/text_styles.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../widgets/favourite_team.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -56,11 +58,10 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: ListView(
         
-        children: const [
+        children: [
           Center(
-            child: Text("Favourite Team!"),
+            child: FavouriteTeam(teamId: favTeamId,),
           ),
-          
         ],
       )
     );
