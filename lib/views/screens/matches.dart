@@ -72,10 +72,6 @@ class _UpcomingMatchesState extends State<UpcomingMatches> {
                     child: CircularProgressIndicator(),
                   );  
                 }
-          
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
               },
             ),
           ),

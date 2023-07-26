@@ -4,7 +4,6 @@ import 'dart:async';
 import 'package:flutter_animator/flutter_animator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:nba_stats_app/data/repo.dart';
 import 'package:nba_stats_app/styles/text_styles.dart';
 import 'package:nba_stats_app/views/screens/on_boarding_screen.dart';
 import 'package:nba_stats_app/views/widgets/buttons.dart';
@@ -78,7 +77,6 @@ class _SplashScreenState extends State<SplashScreen> {
       )
     );
 
-    final repo = Repo();
 
 
     return Scaffold(

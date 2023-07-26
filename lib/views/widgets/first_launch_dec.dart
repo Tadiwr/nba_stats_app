@@ -1,5 +1,4 @@
 import "package:flutter/material.dart";
-import 'package:nba_stats_app/views/screens/home_screen.dart';
 import "package:nba_stats_app/views/screens/splash_screen.dart";
 import "package:nba_stats_app/views/widgets/app_wraper.dart";
 import "package:shared_preferences/shared_preferences.dart";
