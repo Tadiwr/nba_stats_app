@@ -23,7 +23,6 @@ class _FirstLaunchDectectionState extends State<FirstLaunchDectection> {
         isFirstLaunch = value.getBool("isFirstLaunch") ?? true;
       });
     });
-    
   }
 
 

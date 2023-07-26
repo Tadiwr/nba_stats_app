@@ -11,19 +11,37 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
 
-  String username = "";
+  String username = "Username";
+  int favTeamId = -1;
 
-  void _getFutureUsername() async {
+  void loadUsername() async {
     final prefs = await SharedPreferences.getInstance();
     setState(() {
-      username = prefs.getString("username") ?? "";
+      username = prefs.getString("username") ?? "Username Not Found!"; 
     });
+    debugPrint(username);
+  }
+
+  void loadFavouriteTeam() async {
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      favTeamId = prefs.getInt("favouriteTeamId") ?? -1; 
+    });
+    debugPrint("Favourite Team: $favTeamId");
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    // Load username from disk
+    loadUsername();
+
+    // load favourite team id
+    loadFavouriteTeam();
   }
 
   @override
   Widget build(BuildContext context) {
-
-  _getFutureUsername();
 
     return Scaffold(
       appBar: AppBar(
@@ -41,7 +59,6 @@ class _HomeScreenState extends State<HomeScreen> {
         children: const [
           Center(
             child: Text("Favourite Team!"),
-
           ),
           
         ],
