@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:nba_stats_app/views/widgets/first_launch_dec.dart';
 import 'package:nba_stats_app/themes/default_dark_theme.dart';
 import 'package:nba_stats_app/themes/colors.dart';
@@ -12,7 +13,13 @@ void main() {
       statusBarBrightness: Brightness.light
   ));
 
-  runApp(const Core());
+  runApp(
+    // The core app is wrapped out the 
+    //Phoenix widget which allows for the app to tbe rerun
+    Phoenix(
+      child: const Core(),
+    )
+  );
 }
 
 // Core app entry point

@@ -5,7 +5,6 @@ import "package:nba_stats_app/data/models/team_model.dart";
 
 import "../models/scoreboard_model.dart";
 
-
 class EsonCoreApi {
 
   Future<TeamModel> getSingleTeamData(int teamId) async {
@@ -14,6 +13,10 @@ class EsonCoreApi {
     Map<String, dynamic> team = jsonDecode(res.body);
     return TeamModel.fromJson(team);
   }
+
+  // Future<AthletesModel> getAthletes(int teamId) async {
+
+  // } 
 
   Future<List<dynamic>> getTeams() async{
     var jsonString = await rootBundle.loadString('assets/json/teams.json');

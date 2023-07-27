@@ -7,6 +7,8 @@ import 'package:nba_stats_app/views/screens/matches.dart';
 import 'package:nba_stats_app/views/screens/team_screen.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 
+import '../screens/settings_screen.dart';
+
 
 class AppWraper extends StatefulWidget {
   const AppWraper({super.key});
@@ -23,7 +25,8 @@ class _AppWraperState extends State<AppWraper> {
     return [
       const HomeScreen(),
       const TeamScreen(),
-      const UpcomingMatches()
+      const UpcomingMatches(),
+      const SettingsScreen()
     ];
   }
 
@@ -55,7 +58,13 @@ class _AppWraperState extends State<AppWraper> {
         title: "Matches",
         activeColorPrimary: CupertinoColors.activeGreen,
         inactiveColorPrimary: CupertinoColors.systemGrey,
-      )
+      ),
+      PersistentBottomNavBarItem(
+        icon: const Icon(Icons.settings),
+        title: "Settings",
+        activeColorPrimary: CupertinoColors.activeGreen,
+        inactiveColorPrimary: CupertinoColors.systemGrey,
+      ),
     ];
   }
 
